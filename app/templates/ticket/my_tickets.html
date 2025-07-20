@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>My Purchased Tickets</h1>
+    {% if tickets %}
+        <div class="list-group">
+            {% for ticket in tickets %}
+                <a href="{{ url_for('event.event_details', event_id=ticket.event.id) }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ ticket.event.title }}</h5>
+                        <small>{{ ticket.purchase_date.strftime('%Y-%m-%d %H:%M') }}</small>
+                    </div>
+                    <p class="mb-1">Quantity: {{ ticket.quantity }}</p>
+                    <p class="mb-1">Location: {{ ticket.event.location }}</p>
+                    <small class="text-muted">Organizer: {{ ticket.event.organizer.username }}</small>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            You haven't purchased any tickets yet. <a href="{{ url_for('main.home') }}">Browse events!</a>
+        </div>
+    {% endif %}
+{% endblock %}

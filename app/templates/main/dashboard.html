@@ -1,20 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>{{ current_user.username }}'s Dashboard</h1>
-    <p>This is your personalized dashboard.</p>
+<h1>{{ current_user.username }}'s Dashboard</h1>
+<p>This is your personalized dashboard.</p>
+
+<div class="row">
+    {# ... (beginning of dashboard.html) ... #}
 
     <div class="row">
         <div class="col-md-6">
             <h3>My Purchased Tickets</h3>
-            <p>You haven't purchased any tickets yet.</p>
+            {% if current_user.tickets %}
+            <ul class="list-group">
+                {% for ticket in current_user.tickets %}
+                <li class="list-group-item">
+                    <a href="{{ url_for('event.event_details', event_id=ticket.event.id) }}">{{ ticket.event.title
+                        }}</a> - Purchased on {{ ticket.purchase_date.strftime('%Y-%m-%d') }} ({{ ticket.quantity }}
+                    tickets)
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>You haven't purchased any tickets yet. <a href="{{ url_for('main.home') }}">Browse events!</a></p>
+            {% endif %}
         </div>
         <div class="col-md-6">
             <h3>My Organized Events</h3>
-            {% if current_user.role == 'organizer' %}
-                <p>You haven't organized any events yet. <a href="{{ url_for('event.create_event') }}">Create one!</a></p>
+            {% if current_user.role in ['organizer', 'admin'] %}
+            {% if current_user.events_organized %}
+            <ul class="list-group">
+                {% for event in current_user.events_organized %}
+                <li class="list-group-item">
+                    <a href="{{ url_for('event.event_details', event_id=event.id) }}">{{ event.title }}</a> - {{
+                    event.start_time.strftime('%Y-%m-%d') }} ({{ event.status.capitalize() }})
+                    {% if event.status != 'completed' %}
+                    <a href="{{ url_for('event.update_event', event_id=event.id) }}" class="badge bg-secondary ms-2">Edit</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
             {% else %}
-                <p>Upgrade your account to an organizer to create events!</p>
+            <p>You haven't organized any events yet. <a href="{{ url_for('event.create_event') }}">Create one!</a></p>
+            {% endif %}
+            {% else %}
+            <p>Upgrade your account to an organizer to create events!</p>
             {% endif %}
         </div>
     </div>
+</div>
 {% endblock %}

@@ -30,4 +30,8 @@ def create_app(config_class=Config):
     from app.event.routes import event_bp
     app.register_blueprint(event_bp)
 
+    # Ticket blueprint
+    from app.ticket.routes import ticket_bp
+    app.register_blueprint(ticket_bp)
+
     return app
