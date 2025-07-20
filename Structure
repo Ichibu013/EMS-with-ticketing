@@ -10,7 +10,7 @@
 
 -> Werkzeug[bcrypt]: For password hashing (installed by Werkzeug as bcrypt is a dependency for the password utilities).
 
-p-> ython-dotenv: For loading environment variables.
+-> Python-dotenv: For loading environment variables.
 
 Project Structure (Initial):
 
