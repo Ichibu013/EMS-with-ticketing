@@ -1,0 +1,33 @@
+-> Flask: The web framework.
+
+-> Flask-SQLAlchemy: ORM integration for Flask.
+
+-> Flask-Migrate: Database migrations.
+
+-> Flask-WTF: Form handling and CSRF protection.
+
+-> Flask-Login: User session management.
+
+-> Werkzeug[bcrypt]: For password hashing (installed by Werkzeug as bcrypt is a dependency for the password utilities).
+
+p-> ython-dotenv: For loading environment variables.
+
+Project Structure (Initial):
+
+event_management_system/
+├── venv/
+├── .env                  # Environment variables
+├── requirements.txt      # Project dependencies
+├── run.py                # Script to run the application
+└── app/                  # Main application package
+    ├── __init__.py       # App creation and configuration
+    ├── config.py         # Configuration settings
+    ├── models.py         # Database models
+    ├── forms.py          # WTForms definitions
+    ├── routes.py         # Route definitions (initially, later split into blueprints)
+    ├── templates/        # HTML templates
+    │   └── base.html
+    │   └── home.html
+    └── static/           # Static files (CSS, JS, images)
+        └── css/
+        └── js/

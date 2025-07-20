@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="mb-4">Welcome to the Event Management System!</h1>
+    <p class="lead">Discover and manage amazing events.</p>
+
+    {% if not current_user.is_authenticated %}
+    <div class="alert alert-info" role="alert">
+        Please <a href="{{ url_for('auth.login') }}">login</a> or <a href="{{ url_for('auth.register') }}">register</a> to access more features.
+    </div>
+    {% else %}
+    <p>Hello, {{ current_user.username }}! Check out the <a href="{{ url_for('main.dashboard') }}">dashboard</a>.</p>
+    {% endif %}
+
+    <h2>Upcoming Events</h2>
+    <p>No events to display yet. Check back soon!</p>
+
+{% endblock %}

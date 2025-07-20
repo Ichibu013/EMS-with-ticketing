@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ current_user.username }}'s Dashboard</h1>
+    <p>This is your personalized dashboard.</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>My Purchased Tickets</h3>
+            <p>You haven't purchased any tickets yet.</p>
+        </div>
+        <div class="col-md-6">
+            <h3>My Organized Events</h3>
+            {% if current_user.role == 'organizer' %}
+                <p>You haven't organized any events yet. <a href="{{ url_for('event.create_event') }}">Create one!</a></p>
+            {% else %}
+                <p>Upgrade your account to an organizer to create events!</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
