@@ -6,7 +6,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 @login_manager.user_loader
 def load_user(user_id):
-    from sqlalchemy.testing.pickleable import User
     return User.query.get(int(user_id))
 
 class User(db.Model, UserMixin):
@@ -29,7 +28,7 @@ class User(db.Model, UserMixin):
 
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
     start_time = db.Column(db.DateTime, nullable=False, default = datetime.utcnow())
     end_time = db.Column(db.DateTime, nullable=False, default = datetime.utcnow())

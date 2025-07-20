@@ -4,8 +4,7 @@ from wtforms.validators import DataRequired,Length,Email,EqualTo,ValidationError
 from app.models import User
 
 
-class \
-        RegistrationFrom(FlaskForm):
+class RegistrationFrom(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -31,8 +30,8 @@ class LoginFrom(FlaskForm):
 class EventForm(FlaskForm):
     title = StringField('Event Title', validators=[DataRequired(), Length(min=2, max=100)])
     description = TextAreaField('Event Description', validators=[DataRequired()])
-    start_date = DateTimeLocalField('Start Date', format='%Y-%m-%dT%H:%M', validators=[DataRequired()])
-    end_date = DateTimeLocalField('End Date', format='%Y-%m-%dT%H:%M', validators=[DataRequired()])
+    start_time = DateTimeLocalField('Start Time', format='%Y-%m-%dT%H:%M', validators=[DataRequired()])
+    end_time = DateTimeLocalField('End Time', format='%Y-%m-%dT%H:%M', validators=[DataRequired()])
     location = StringField('Event Location', validators=[DataRequired(), Length(min=2, max=100)])
     capacity = IntegerField('Capacity', validators=[DataRequired()])
     ticket_price = FloatField('Ticket Price', validators=[DataRequired()])
