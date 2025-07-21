@@ -34,4 +34,8 @@ def create_app(config_class=Config):
     from app.ticket.routes import ticket_bp
     app.register_blueprint(ticket_bp)
 
+    # Admin blueprint
+    from app.admin.routes import admin_bp
+    app.register_blueprint(admin_bp, url_prefix='/admin')
+
     return app
