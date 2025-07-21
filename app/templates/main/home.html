@@ -17,7 +17,7 @@
                 {% for event in events %}
                     <div class="col-md-4 mb-4">
                         <div class="card h-100">
-                            <img src="{{ url_for('static', filename='images/calendar-days-solid.svg') }}" class="card-img-top" alt="Event Image">
+                            <img src="{{ url_for('static', filename='images/default_event.jpeg') }}" class="card-img-top" alt="Event Image">
                             <div class="card-body">
                                 <h5 class="card-title">{{ event.title }}</h5>
                                 <p class="card-text"><small class="text-muted">By {{ event.organizer.username }}</small></p>

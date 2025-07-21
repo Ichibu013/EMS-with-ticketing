@@ -38,4 +38,8 @@ def create_app(config_class=Config):
     from app.admin.routes import admin_bp
     app.register_blueprint(admin_bp, url_prefix='/admin')
 
+    # Error blueprint
+    from app.errors.routes import errors_bp
+    app.register_blueprint(errors_bp)
+
     return app
