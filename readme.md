@@ -128,3 +128,70 @@ Finally, execute this command to apply the pending migrations to your database. 
 flask db upgrade
 
 ```
+
+## 6. Final Project Structure
+
+The project will be organized as follows:
+
+```
+event_management_system/
+├── venv/                       # Python virtual environment
+├── .env                        # Environment variables (e.g., secret keys, database URLs)
+├── requirements.txt            # Lists all project dependencies
+├── run.py                      # Script to run the Flask application
+└── app/                        # Main application package
+    ├── admin/                  # Blueprint For Admin Functionality
+    │   ├── __init__.py/        # Python directory initilization
+    │   └── routes.py/          # Contains blueprint that defines URL routes and 
+    │                           # their corresponding view functions
+    ├── auth/                   # Blueprint For Auth Functionality i.e Login and Registeration
+    │   ├── __init__.py/        # Python directory initilization
+    │   └── routes.py/          # Contains blueprint that defines URL routes and 
+    │                           # their corresponding view functions
+    ├── errors/                 # Blueprint For Error Functionality i.e CODE - 403 404 500
+    │   ├── __init__.py/        # Python directory initilization
+    │   └── routes.py/          # Contains blueprint that defines URL routes and 
+    │                           # their corresponding view functions
+    ├── event/                  # Blueprint For Event Functionality
+    │   ├── __init__.py/        # Python directory initilization
+    │   └── routes.py/          # Contains blueprint that defines URL routes and 
+    │                           # their corresponding view functions
+    ├── main/                   # Blueprint For Home Page Functionality
+    │   ├── __init__.py/        # Python directory initilization
+    │   └── routes.py/          # Contains blueprint that defines URL routes and 
+    │                           # their corresponding view functions
+    ├── ticket/                 # Blueprint For Ticketing Functionality
+    │   ├── __init__.py/        # Python directory initilization
+    │   └── routes.py/          # Contains blueprint that defines URL routes and 
+    │                           # their corresponding view functions
+    ├── __init__.py             # Application creation, configuration, and blueprint registration
+    ├── config.py               # Centralized configuration settings for the application
+    ├── models.py               # Defines database models (e.g., User, Event) using SQLAlchemy
+    ├── forms.py                # Contains WTForms definitions for various forms (e.g., login, registration)
+    ├── templates/              # Stores Jinja2 HTML templates
+    │   ├── admin/              # Stores Admin HTML Templates
+    │   │   └── dashboard.html  # Admin Dashboard template
+    │   ├── auth/               # Stores Auth HTML templates
+    │   │   ├── login.html      # Login page template
+    │   │   └── register.html   # Register page template
+    │   ├── errors/             # Stores errors HTML templates
+    │   │   ├── 403.html        # CODE - 403 template
+    │   │   ├── 404.html        # CODE - 404 template
+    │   │   └── 500.html        # CODE - 405 template
+    │   ├── event/              # Stores event HTML templates
+    │   │   ├── create_ev.html  # Creating event template
+    │   │   └── ev_detail.html  # Event details template
+    │   ├── main/               # Stores Home page HTML templates
+    │   │   ├── dashboard.html  # User Dashboard Template
+    │   │   └── home.html       # User home page template
+    │   ├── ticket/             # Stores tickets HTML templates
+    │   │   ├── my_tick.html    # User existing ticket template
+    │   │   └── pur_conf.html   # Purchase confirm page template
+    │   └── base.html           # Base template for consistent page structure
+    └── static/                 # Holds static assets like CSS, JavaScript, and images
+        ├── css/                # Stylesheets for the application's look and feel
+        ├── images/             # Images for the application's look and feel
+        │   └── defa_ev.jpeg    # Default Images of Event tile
+        └── js/                 # JavaScript files for interactive elements
+
+```
